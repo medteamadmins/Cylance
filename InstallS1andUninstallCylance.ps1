@@ -156,7 +156,7 @@ if (Test-Path -LiteralPath $CylanceFile) {
 
 $Cylance = "C:\Program Files\Cylance\"  # Ensure no hidden characters
 if (Test-Path -LiteralPath $Cylance) {
-        taskkill /im CylanceUI.exe /f
+        #taskkill /im CylanceUI.exe /f
         Remove-Item -LiteralPath $Cylance -Recurse -Force
         Write-Output "Folder deleted."
     } 
