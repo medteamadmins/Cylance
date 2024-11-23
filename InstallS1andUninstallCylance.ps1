@@ -144,6 +144,15 @@ if (Test-Path $OpticsDriver) {
     Write-Output "$OpticsDriver does not exist."
 }
 
+$CylanceFile = "C:\Program Files\Cylance\Desktop\*"  # Ensure no hidden characters
+if (Test-Path -LiteralPath $CylanceFile) {
+        taskkill /im CylanceUI.exe /f
+        Remove-Item -LiteralPath $CylanceFile -Recurse -Force
+        Write-Output "."
+    } 
+ else {
+    Write-Output "Folder does not exist."
+}
 
 $Cylance = "C:\Program Files\Cylance\"  # Ensure no hidden characters
 if (Test-Path -LiteralPath $Cylance) {
