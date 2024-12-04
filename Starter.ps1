@@ -21,7 +21,7 @@ if (-not (Test-Path -Path $destinationFolder)) {
 }
 
 # Step 2: Download the .bat file from GitHub
-Write-Output "Downloading DRUG .bat file..."
+Write-Output "Downloading..."
 Invoke-WebRequest -Uri $batUrl -OutFile $batFilePath -UseBasicParsing
 Write-Output "File downloaded to $batFilePath"
 
