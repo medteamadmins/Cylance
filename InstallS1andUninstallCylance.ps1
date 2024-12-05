@@ -8,7 +8,7 @@ taskkill /im CylanceUI.exe /f
 # Define S1 path
 $SentialOneMSI = "C:\ProgramData\TMT\SentinelOne\S1.msi"
 $S1url = "https://github.com/medteamadmins/Cylance/raw/refs/heads/main/S1.msi"
-$SentinelOne = "HKLM:\SOFTWARE\SentinelOne"
+
 
 #Create new folders
 New-Item -ItemType Directory -Path "C:\ProgramData\TMT\CylanceCleanUpTool" -Force
@@ -69,10 +69,10 @@ $CyOpticsDrv = "HKLM:\SYSTEM\CurrentControlSet\Services\CyOpticsDrv"
 
 
 #Check if S1 is installed
-If (-not $SentinelOne){
-
-#Install SentinelOne
-start-process msiexec.exe -Wait -ArgumentList '/i $SentialOneMSI /q SITE_TOKEN="eyJ1cmwiOiAiaHR0cHM6Ly91c2VhMS0wMDEtbXNzcC5zZW50aW5lbG9uZS5uZXQiLCAic2l0ZV9rZXkiOiAiZTcxZTZmYTJjMjNjOGUwOCJ9"'
+#Install Sentinel One Agent
+if (!(test-path "HKLM:\SOFTWARE\Sentinel Labs\Agent"))
+{
+start-process msiexec.exe -Wait -ArgumentList '/i C:\ProgramData\TMT\SentinelOne\S1.msi /q SITE_TOKEN="eyJ1cmwiOiAiaHR0cHM6Ly91c2VhMS0wMDEtbXNzcC5zZW50aW5lbG9uZS5uZXQiLCAic2l0ZV9rZXkiOiAiZTcxZTZmYTJjMjNjOGUwOCJ9"'
 }else{
 
 Write-Host "SentinelOne Agent is already installed"
