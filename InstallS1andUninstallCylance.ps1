@@ -49,10 +49,10 @@ Invoke-WebRequest -Uri $CleanupToolurl -OutFile $CleanupToolpath
 Invoke-WebRequest -Uri $cleanupconfigurl -OutFile $Cleanupconfig
 Invoke-WebRequest -Uri $cleanupexeurl -OutFile $cleanupexe
 #Download Reg
-Invoke-WebRequest -Uri $CylanceSvcUrl -OutFile $CylanceSvcReg
-Invoke-WebRequest -Uri $CylanceDrvUrl -OutFile $CylanceDrvReg
-Invoke-WebRequest -Uri $CyOpticsDrvUrl -OutFile $CyOpticsDrvReg
-Invoke-WebRequest -Uri $CyOpticsUrl -OutFile $CyOpticsReg
+#Invoke-WebRequest -Uri $CylanceSvcUrl -OutFile $CylanceSvcReg
+#Invoke-WebRequest -Uri $CylanceDrvUrl -OutFile $CylanceDrvReg
+#Invoke-WebRequest -Uri $CyOpticsDrvUrl -OutFile $CyOpticsDrvReg
+#Invoke-WebRequest -Uri $CyOpticsUrl -OutFile $CyOpticsReg
 
 #Download S1
 Invoke-WebRequest -Uri $S1url -OutFile $SentialOneMSI
@@ -86,10 +86,10 @@ Net stop CylanceSVC
 taskkill /im CylanceUI.exe /f
 
 #Update Reg
-Start-Process regedit.exe -ArgumentList "/s $CyOpticsReg" -Wait -NoNewWindow
-Start-Process regedit.exe -ArgumentList "/s $CyOpticsDrvReg" -Wait -NoNewWindow
-Start-Process regedit.exe -ArgumentList "/s $CylanceDrvReg" -Wait -NoNewWindow
-Start-Process regedit.exe -ArgumentList "/s $CylanceSvcReg" -Wait -NoNewWindow
+#Start-Process regedit.exe -ArgumentList "/s $CyOpticsReg" -Wait -NoNewWindow
+#Start-Process regedit.exe -ArgumentList "/s $CyOpticsDrvReg" -Wait -NoNewWindow
+#Start-Process regedit.exe -ArgumentList "/s $CylanceDrvReg" -Wait -NoNewWindow
+#Start-Process regedit.exe -ArgumentList "/s $CylanceSvcReg" -Wait -NoNewWindow
 
 #Uninstall Cylance OPTICS
 $CylanceOptics = Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -match "Cylance OPTICS"} | Select-Object -ExpandProperty IdentifyingNumber
